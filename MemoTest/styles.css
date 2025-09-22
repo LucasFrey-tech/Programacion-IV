@@ -21,11 +21,12 @@ main {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    width: 80%;
+    width: 100%;
     border: 2px solid;
     border-radius: 5px;
     justify-self: center;
     align-items: stretch;
+    overflow: hidden;
 }
 
 #Test {
@@ -68,6 +69,7 @@ main {
     padding: 5px;
     text-align: center;
     box-sizing: border-box;
+    align-content: center;
 }
 
 #Panel {
@@ -81,6 +83,26 @@ main {
     text-align: center;
 }
 
+#Difficulty-level {
+    width: 100%;
+    margin-top: 10px;
+    border-top: 1px solid;
+}
+
 h4 {
-    margin: 10%;
+    margin:0 ;
+}
+
+
+@media (min-width: 768px) {
+  main {
+    width: 80%;
+
+  }
+}
+
+@media (min-width: 1440px) {
+  main {
+    width: 50%;
+  }
 }
