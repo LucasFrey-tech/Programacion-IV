@@ -33,7 +33,6 @@ main {
 
 #Table {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
     gap: 1rem;
     padding: 1rem;
     width: auto;
@@ -42,7 +41,7 @@ main {
 }
 
 .Card {
-    width: 100%;
+    width: 60%;
     height: 100%;
     perspective: 600px;
     cursor: pointer;
