@@ -22,7 +22,7 @@ export class Tablero {
         console.log("Deck Barajado", this.deck);
         this.setCards();
         this.tableFormat();
-        this.again();
+        this.again(array);
     }
 
     setDifficulty(allPictures) {
@@ -106,12 +106,12 @@ export class Tablero {
         this.table.style.gridTemplateColumns = `repeat(${cols}, 1fr)`; 
     }
 
-    again() {
+    again(allPictures) {
         this.newGame.addEventListener("click", () => {
             this.panel.setFoundPairs(0);
             this.panel.setMovements(0);
             this.setCards();
-            this.tableFormat();
+            this.setTable([...allPictures])
         })
     }
 }
