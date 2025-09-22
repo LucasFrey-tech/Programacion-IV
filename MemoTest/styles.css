@@ -1,17 +1,20 @@
 body {
     width: 100%;
     margin: 0;
-    padding: 0;
-    height: auto;
+    background-color: beige;
 }
 
 header {
-    width: 50%;
+    width: 100%;
     justify-self: center;
+    background-color: lightblue;
+    border-bottom: 1px solid;
+    margin-bottom: 10px;
 }
 
 #Title {
     text-align: center;
+    margin: 0;
 }
 
 main {
