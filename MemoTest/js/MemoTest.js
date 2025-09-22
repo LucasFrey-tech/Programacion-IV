@@ -1,7 +1,6 @@
 import { Tablero } from "./table.js";
 function main (){
-    let difficulty = document.querySelectorAll(".Difficulty");
-    let allPictures = [
+    const allPictures = [
         'resources/cardIcons/png/birrete.png',
         'resources/cardIcons/png/calculadora.png',
         'resources/cardIcons/png/carrito-de-compras.png',
@@ -16,17 +15,8 @@ function main (){
         'resources/cardIcons/png/taza-de-cafe.png'
     ]
     
-    let cards = [];
     const tablero = new Tablero(6);
-    
-    difficulty.forEach(element => {
-        element.addEventListener("click", (Event) => {
-            const cantidad = Event.target.value;
-            tablero.setDifficulty(cantidad);
-            tablero.setTable(allPictures);
-        })
-    });
-    
+    tablero.setDifficulty(allPictures);
     tablero.setTable(allPictures);
 }
 
