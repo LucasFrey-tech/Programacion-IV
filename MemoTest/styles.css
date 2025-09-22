@@ -12,6 +12,10 @@ header {
     margin-bottom: 10px;
 }
 
+h1 {
+    text-decoration: underline;
+}
+
 #Title {
     text-align: center;
     margin: 0;
@@ -72,9 +76,18 @@ main {
     align-content: center;
 }
 
+h2 {
+    font-size: 200%;
+    text-decoration: underline;
+}
+
 #Panel {
     border: 2px solid;
     width: 100%;
+}
+
+p {
+    font-size: 200%;
 }
 
 #Buttons {
@@ -91,6 +104,7 @@ main {
 
 h4 {
     margin:0 ;
+    text-decoration: underline;
 }
 
 
