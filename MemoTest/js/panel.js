@@ -17,10 +17,12 @@ export class Panel {
     }
 
     setFoundPairs(val) {
+        this.foundPairs = val;
         this.docPairs.textContent = val;
     }
 
     setMovements(val) {
+        this.movements = val;
         this.docMovements.textContent = val;
     }
 
