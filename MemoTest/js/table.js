@@ -1,9 +1,15 @@
 import { Carta } from "./card.js";
+import { Panel } from "./panel.js";
 
 export class Tablero {
     constructor(cant){
         this.cant = cant;
         this.deck = []; 
+        this.difficulty = document.querySelectorAll(".Difficulty");
+        this.table = document.getElementById("Table");
+        this.panel = new Panel();
+        this.newGame = document.getElementById("New-Beginning");
+        this.rest = document.getElementById("Restart");
     }
 
     setTable(array) {
@@ -15,10 +21,18 @@ export class Tablero {
         this.shuffle(this.deck);
         console.log("Deck Barajado", this.deck);
         this.setCards();
+        this.tableFormat();
+        this.again();
     }
 
-    setDifficulty(cant) {
-        this.cant = cant;
+    setDifficulty(allPictures) {
+        this.difficulty.forEach(element => {
+            element.addEventListener("click", (Event) => {
+                const cantidad = Event.target.value;
+                this.cant = Number(cantidad);
+                this.setTable(allPictures);
+            })
+        });
     }
 
     shuffle(array) {
@@ -39,22 +53,20 @@ export class Tablero {
     }
 
     createElement(element) {
-        const section = document.getElementById("Table");
-        section.appendChild(element.createElement());
+        this.table.appendChild(element.createElement());
     }
 
     setCards() {
         this.deck = this.deck.map(url => new Carta(url));
 
-        const section = document.getElementById("Table");
-        section.innerHTML = "";
+        this.table.innerHTML = "";
 
         let flippedCards = [];
         let boardlocked = false;
 
         this.deck.forEach(carta => {
             const div = carta.createElement();
-            section.appendChild(div);
+            this.table.appendChild(div);
 
             div.addEventListener("click", () => {
                 if (boardlocked || carta.flipped) return;
@@ -67,7 +79,8 @@ export class Tablero {
 
                     if (first.face === second.face) {
                         flippedCards = [];
-
+                        this.panel.founded();
+                        console.log("Pares encontrados: ", this.panel.foundPairs);
                     } else {
                         boardlocked = true;
                         setTimeout(() => {
@@ -76,9 +89,29 @@ export class Tablero {
                             flippedCards = [];
                             boardlocked = false;
                         }, 1000);
+                        this.panel.attempts();
+                        console.log("Intentos: ", this.panel.movements);
                     }
                 }
             });
         });
+    }
+
+    tableFormat(){
+        const total = this.deck.length;
+        let cols = Math.floor(Math.sqrt(total))
+        while (total % cols !== 0) {
+            cols--;
+        }
+        this.table.style.gridTemplateColumns = `repeat(${cols}, 1fr)`; 
+    }
+
+    again() {
+        this.newGame.addEventListener("click", () => {
+            this.panel.setFoundPairs(0);
+            this.panel.setMovements(0);
+            this.setCards();
+            this.tableFormat();
+        })
     }
 }
