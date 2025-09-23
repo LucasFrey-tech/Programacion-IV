@@ -1,4 +1,9 @@
 import { Tablero } from "./table.js";
+
+/**
+ * Programa Principal
+ */
+
 function main (){
     const allPictures = [
         'resources/cardIcons/png/birrete.png',
